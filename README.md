@@ -160,7 +160,7 @@ flowchart LR
 
 **🗺️ Navigator layer :**
 
-![Navigator Scénario 2](mapping/navigator_scenario2.png.png)
+![Navigator Scénario 2](mapping/navigator_scenario2.png)
 
 </details>
 
