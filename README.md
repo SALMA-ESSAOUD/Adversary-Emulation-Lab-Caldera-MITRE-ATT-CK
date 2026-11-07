@@ -41,21 +41,21 @@ L'objectif n'était pas de suivre un tutoriel, mais de **déployer réellement**
 
 ```mermaid
 flowchart LR
-    subgraph HOST["🖥️ Hôte "]
+    subgraph HOST["🖥️ Hôte Fedora"]
         C2["Caldera C2\n(Docker · :8888)"]
     end
 
     subgraph S1["Scénario 1"]
-        WIN1["VM Windows Server\n192.168.56.21\nVictime phishing"]
+        WIN1["VM Windows Server\n10.10.10.11\nVictime phishing"]
     end
 
     subgraph S2["Scénario 2"]
-        UB1["VM Ubuntu\n192.168.56.22\nOWASP Juice Shop"]
-        UB2["VM Ubuntu\n192.168.56.26\nPivot interne"]
+        UB1["VM Ubuntu\n10.10.10.12\nOWASP Juice Shop"]
+        UB2["VM Ubuntu\n10.10.10.16\nPivot interne"]
     end
 
     subgraph S3["Scénario 3"]
-        WIN2["VM Windows\n192.168.56.20\nPivot SMB"]
+        WIN2["VM Windows\n10.10.10.10\nPivot SMB"]
     end
 
     C2 -->|HTTP beacon| WIN1
@@ -70,15 +70,15 @@ flowchart LR
     style WIN2 fill:#2EA043,color:#fff
 ```
 
-Réseau **host-only** VirtualBox (`192.168.56.0/24`), entièrement isolé d'Internet côté cibles. Caldera tourne en conteneur Docker sur l'hôte.
+Réseau **host-only** VirtualBox (`10.10.10.0/24`), entièrement isolé d'Internet côté cibles. Caldera tourne en conteneur Docker sur l'hôte.
 
 | Rôle | Machine | OS | IP |
 |---|---|---|---|
-| Serveur C2 | Hôte | Fedora | `192.168.56.1` |
-| Victime phishing | VM 1 | Windows Server | `192.168.56.21` |
-| Serveur web vulnérable | VM 2 | Ubuntu 22.04 | `192.168.56.22` |
-| Pivot interne (Linux) | VM 3 | Ubuntu 22.04 | `192.168.56.26` |
-| Pivot interne (Windows) | VM 4 | Windows Server | `192.168.56.20` |
+| Serveur C2 | Hôte | Fedora | `10.10.10.1` |
+| Victime phishing | VM 1 | Windows Server | `10.10.10.11` |
+| Serveur web vulnérable | VM 2 | Ubuntu 22.04 | `10.10.10.12` |
+| Pivot interne (Linux) | VM 3 | Ubuntu 22.04 | `10.10.10.16` |
+| Pivot interne (Windows) | VM 4 | Windows Server | `10.10.10.10` |
 
 ---
 
@@ -124,7 +124,9 @@ flowchart LR
 | Script PowerShell | Execution | `T1059.001` |
 | Connexion C2 | Command and Control | `T1071.001` |
 
-📄 Rapport complet : [`docs/scenario1.pdf`](docs/scenario1.pdf) · 🗺️ Navigator : [`navigator/scenario1.json`](navigator/scenario1.json)
+**🗺️ Navigator layer :**
+
+![Navigator Scénario 1](mapping/scenario1_navigator.png)
 
 </details>
 
@@ -156,7 +158,9 @@ flowchart LR
 | Clé SSH exploitée | Credential Access | `T1552.004` |
 | Pivot vers machine interne | Lateral Movement | `T1021.004` |
 
-📄 Rapport complet : [`docs/scenario2.pdf`](docs/scenario2.pdf) · 🗺️ Navigator : [`navigator/scenario2.json`](navigator/scenario2.json)
+**🗺️ Navigator layer :**
+
+![Navigator Scénario 2](mapping/scenario2_navigator.png)
 
 </details>
 
@@ -182,7 +186,9 @@ flowchart LR
 | Reconnaissance réseau | Discovery | `T1018` |
 | Connexion via SMB | Lateral Movement | `T1021.002` |
 
-📄 Rapport complet : [`docs/scenario3.pdf`](docs/scenario3.pdf) · 🗺️ Navigator : [`navigator/scenario3.json`](navigator/scenario3.json)
+**🗺️ Navigator layer :**
+
+![Navigator Scénario 3](mapping/scenario3_navigator.png)
 
 </details>
 
@@ -208,17 +214,17 @@ flowchart LR
 ```
 .
 ├── README.md
-├── docs/                   # Rapports détaillés (PDF)
-│   ├── scenario1.pdf
-│   ├── scenario2.pdf
-│   └── scenario3.pdf
-├── latex/                  # Sources LaTeX des rapports
-├── navigator/               # Layers MITRE ATT&CK Navigator (.json)
-│   ├── scenario1.json
-│   ├── scenario2.json
-│   └── scenario3.json
-└── images/                 # Captures d'écran (Caldera, résultats)
+├── mapping/                 # Cartographie MITRE ATT&CK Navigator (captures)
+│   ├── scenario1_navigator.png
+│   ├── scenario2_navigator.png
+│   └── scenario3_navigator.png
+└── operations/              # Preuves d'exécution (captures Caldera : agents, profils, résultats)
+    ├── scenario1/
+    ├── scenario2/
+    └── scenario3/
 ```
+
+> Les commandes de ce README sont présentées avec des valeurs d'exemple (IPs, identifiants) plutôt que les valeurs réelles du lab, pour éviter d'exposer des informations spécifiques à l'environnement de test.
 
 ---
 
