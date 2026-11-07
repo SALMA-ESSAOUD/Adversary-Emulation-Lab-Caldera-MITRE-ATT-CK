@@ -41,7 +41,7 @@ L'objectif n'était pas de suivre un tutoriel, mais de **déployer réellement**
 
 ```mermaid
 flowchart LR
-    subgraph HOST["🖥️ Hôte Fedora"]
+    subgraph HOST["🖥️ Hôte "]
         C2["Caldera C2\n(Docker · :8888)"]
     end
 
