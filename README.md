@@ -126,7 +126,7 @@ flowchart LR
 
 **🗺️ Navigator layer :**
 
-![Navigator Scénario 1](mapping/scenario1_navigator.png)
+![Navigator Scénario 1](mapping/navigator_scenario1.png)
 
 </details>
 
@@ -160,7 +160,7 @@ flowchart LR
 
 **🗺️ Navigator layer :**
 
-![Navigator Scénario 2](mapping/scenario2_navigator.png)
+![Navigator Scénario 2](mapping/navigator_scenario2.png.png)
 
 </details>
 
@@ -188,7 +188,7 @@ flowchart LR
 
 **🗺️ Navigator layer :**
 
-![Navigator Scénario 3](mapping/scenario3_navigator.png)
+![Navigator Scénario 3](mapping/navigator_scenario3.png)
 
 </details>
 
