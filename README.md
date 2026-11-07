@@ -246,7 +246,6 @@ Ce dépôt documente un exercice réalisé exclusivement dans un environnement d
 
 **Toute utilisation de ces techniques contre des systèmes que vous ne possédez pas ou n'êtes pas explicitement autorisé(e) à tester est illégale.**
 
-Les identifiants et mots de passe visibles dans les commandes sont des valeurs de laboratoire jetables, sans rapport avec un système réel.
 
 ---
 
